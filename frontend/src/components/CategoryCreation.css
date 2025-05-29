@@ -1,0 +1,166 @@
+/* General styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f8f9fa;
+}
+
+.quizly-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-family: "Times New Roman", Times, serif; 
+  font-size: 24px; /* Ajustez selon la taille de votre navbar */
+  font-weight: 700; /* Épais comme "LE MONDE" */
+  font-style: italic; /* Italique subtile */
+  color: #7e57c2; /* Violet de Quizly */
+  text-transform: uppercase; /* "QUIZLY" en majuscules */
+  letter-spacing: 0.5px; 
+  text-rendering: optimizeLegibility; 
+}
+
+.add-button {
+  background-color: #7e57c2; /* Purple */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+}
+
+/* Content styles */
+.content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 400px;
+}
+
+/* Book icon styles */
+.book-icon {
+  margin-bottom: 30px;
+  position: relative;
+  width: 120px;
+  height: 140px;
+}
+
+.book-cover {
+  position: absolute;
+  width: 100px;
+  height: 140px;
+  background-color: #7e57c2; /* Purple */
+  border-radius: 4px 8px 8px 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-spine {
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  width: 8px;
+  height: 130px;
+  background-color: #673ab7; /* Darker purple for spine */
+  border-radius: 4px 0 0 4px;
+}
+
+.book-pages {
+  position: absolute;
+  right: -15px;
+  top: 5px;
+  width: 30px;
+  height: 130px;
+  background-color: #f5f5f5;
+  border-radius: 0 4px 4px 0;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Text styles */
+.empty-state h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.empty-state p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* 🟣 Input Module Name */
+.module-input {
+  width: 80%; /* Réduit un peu pour mieux s'intégrer */
+  padding: 12px 18px;
+  margin: 15px 0;
+  border: 2px solid #7e57c2; /* Bordure violet clair */
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.module-input:focus {
+  border-color: #5e35b1; /* Bordure plus foncée au focus */
+  box-shadow: 0 0 8px rgba(126, 87, 194, 0.5); /* Glow léger */
+  outline: none;
+}
+
+.module-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* 🟣 Amélioration du bouton "Create Material" */
+.create-button {
+  background-color: #7e57c2; /* Violet */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px; /* Espacement supplémentaire */
+}
+
+.create-button:hover {
+  background-color: #5e35b1; /* Violet plus foncé */
+  transform: scale(1.05); /* Effet léger au survol */
+}
+
+/* Small adjustment for better responsiveness on small screens */
+@media (max-width: 768px) {
+  .empty-state {
+    max-width: 100%;
+    padding: 20px;
+  }
+}

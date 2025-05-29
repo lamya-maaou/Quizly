@@ -1,0 +1,110 @@
+.quiz-history-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+  }
+  
+  .navbar-left .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #7e57c2;
+  }
+  
+.quiz-history-container .navbar .navbar-right .back-button{
+    background-color: transparent;
+      color: #7e57c2;
+      border: 1px solid #7e57c2;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-right: 20px;
+    }
+.quiz-detail-container .navbar .navbar-right .back-button:hover{
+    background-color: #7e57c2;
+  }
+.quiz-detail-container .navbar .navbar-right .back-button{
+  color: #7e57c2 !important;
+  }
+.quiz-detail-container .navbar .navbar-right .back-button:hover,
+.quiz-detail-container .navbar .navbar-right .back-button:active{
+  color: white !important; /* Change la couleur du texte au survol/clic */
+  background-color: #7e57c2;
+  }
+  
+  .quiz-history-content h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+  }
+  
+  .quizzes-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .quiz-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .quiz-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+  
+  .quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .view-details {
+    padding: 8px 16px;
+    background-color: #4a6baf;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .view-details:hover {
+    background-color: #3a5a9f;
+  }
+  
+  .no-quizzes {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+  }
+  
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+  }
+  
+  .error {
+    text-align: center;
+    padding: 40px;
+    color: #dc3545;
+  }

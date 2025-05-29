@@ -1,0 +1,417 @@
+/* TeacherModules.css */
+
+/* Base Styles */
+.student-categories {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    background-color: #f9f5ff;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #7e57c2;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 10px rgba(126, 87, 194, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-left .logo {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Style commun pour tous les boutons de la navbar */
+.navbar-right button {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.navbar-right button:hover {
+    background-color: #ffffff;
+    color: #7e57c2;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content */
+.categories-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+.categories-title {
+    color: #5e35b1;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    border-bottom: 2px solid #d1c4e9;
+    padding-bottom: 0.5rem;
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+    padding: 2rem;
+}
+
+.book-icon {
+    margin-bottom: 2rem;
+    position: relative;
+    width: 100px;
+    height: 120px;
+}
+
+.book-cover {
+    width: 80px;
+    height: 100px;
+    background-color: #7e57c2;
+    border-radius: 2px 6px 6px 2px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book-spine {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 8px;
+    height: 90px;
+    background-color: #5e35b1;
+    border-radius: 2px 0 0 2px;
+}
+
+.book-pages {
+    position: absolute;
+    right: -5px;
+    top: 5px;
+    width: 10px;
+    height: 90px;
+    background-color: #f5f5f5;
+    border-radius: 0 2px 2px 0;
+}
+
+.empty-state h2 {
+    color: #5e35b1;
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.create-button {
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(126, 87, 194, 0.3);
+}
+
+.create-button:hover {
+    background-color: #5e35b1;
+    transform: translateY(-2px);
+}
+
+.create-button.floating {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 60px;
+    height: 75px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modules Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.category-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(126, 87, 194, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-top: 4px solid #7e57c2;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(126, 87, 194, 0.15);
+}
+
+.category-card h3 {
+    color: #5e35b1;
+    margin-bottom: 0.5rem;
+}
+
+.category-card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    color: #5e35b1;
+    margin-bottom: 1.5rem;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #d1c4e9;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #7e57c2;
+    box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.2);
+}
+
+.modal-content button {
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: background-color 0.2s;
+}
+
+.modal-content button:hover {
+    background-color: #5e35b1;
+}
+
+.close-btn {
+    background-color: #e1bee7 !important;
+    color: #5e35b1 !important;
+}
+
+.close-btn:hover {
+    background-color: #ce93d8 !important;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.add-button {
+    background-color: white;
+    color: #7e57c2;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 2px solid #7e57c2;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    margin-left: 20px;
+}
+
+.add-button:hover {
+    background-color: #7e57c2;
+    color: white;
+}
+
+.add-button-navbar {
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-button-navbar:hover {
+    background-color: #5e35b1;
+    transform: scale(1.1);
+}
+
+.access-quiz-nav-btn,
+.dashboard-btn,
+.add-btn,
+.logout-btn {
+    /* Les styles sont maintenant hérités du sélecteur commun */
+}
+
+.access-quiz-nav-btn {
+    /* Les styles sont maintenant hérités du sélecteur commun */
+}
+
+.access-quiz-modal {
+    max-width: 600px !important;
+}
+
+.access-quiz-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.access-quiz-modal .modal-header h3 {
+    color: #5e35b1;
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close-modal-btn:hover {
+    color: #d32f2f;
+}
+
+.modal-description {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.access-quiz-modal .quiz-link-input {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.access-quiz-modal .quiz-link-input input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #d1c4e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8f5ff;
+}
+
+.access-quiz-modal .quiz-link-input input:focus {
+    outline: none;
+    border-color: #7e57c2;
+    box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.1);
+}
+
+.access-quiz-modal .access-quiz-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.add-btn {
+    padding: 8px 12px;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--hover-bg);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 1rem;
+    }
+
+    .navbar-right {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .navbar-right button {
+        width: 100%;
+    }
+}
+    

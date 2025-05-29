@@ -1,0 +1,55 @@
+/* VerifyEmailNotice.css */
+.verify-email-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.success-message {
+  color: #2e7d32;
+}
+
+.warning-message {
+  color: #ed6c02;
+}
+
+.error-message {
+  color: #d32f2f;
+}
+
+.info-message {
+  color: #0288d1;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #1976d2;
+  color: white;
+}
+
+.resend-section {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.resend-link {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.resend-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,203 @@
+:root {
+  --primary: #7e57c2;
+  --primary-light: #9575cd;
+  --primary-dark: #5e35b1;
+  --text-dark: #2d3748;
+  --text-light: #f8f9fa;
+  --card-bg: rgba(255, 255, 255, 0.98);
+}
+
+.signup-page-bg {
+  min-height: 100vh;
+  background: #f8f9fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.addUser {
+  width: 550px;    /* élargit le formulaire */
+  min-width: unset;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 32px 40px 26px 40px; /* plus d'espace latéral */
+  border-radius: 14px;
+  box-shadow: 0 6px 28px rgba(126, 87, 194, 0.13);
+  transition: all 0.3s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 95vh;
+  overflow: visible;
+}
+
+
+@media (max-width: 500px) {
+  .addUser {
+    width: 98vw;
+    min-width: unset;
+    padding: 14px 4vw;
+  }
+}
+
+.signup-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo-signup {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  margin-bottom: 6px;
+  margin-top: 0;
+  line-height: 1;
+}
+
+.addUser h3 {
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  margin-top: 0;
+  position: relative;
+  padding-bottom: 7px;
+  font-size: 1.15rem;
+}
+
+.addUser h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2.5px;
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+  border-radius: 2px;
+}
+
+.addUserForm .inputGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  gap: 0.5rem;
+}
+
+.addUserForm .inputGroup label {
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 0.97rem;
+  margin-bottom: 2px;
+}
+
+.addUserForm .inputGroup input {
+  padding: 9px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 7px;
+  font-size: 0.97rem;
+  transition: all 0.2s;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.addUserForm .inputGroup input:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(149, 117, 205, 0.13);
+  outline: none;
+}
+
+.addUserForm .inputGroup input.error {
+  border-color: #e57373;
+}
+
+.error-message {
+  color: #e57373;
+  font-size: 0.89rem;
+  margin-bottom: 0;
+  margin-top: 2px;
+}
+
+.inputGroup button[type="submit"] {
+  margin-top: 18px;
+  padding: 10px;
+  background: linear-gradient(45deg, var(--primary-dark), var(--primary));
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 10px rgba(126, 87, 194, 0.23);
+  width: 100%;
+  font-size: 1rem;
+}
+
+.inputGroup button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(94, 53, 177, 0.21);
+  background: linear-gradient(45deg, var(--primary-dark), var(--primary-light));
+}
+
+.login {
+  margin-top: -13px;
+  text-align: center;
+}
+
+.login .btn.btn-primary {
+  margin-top: 4px;
+  width: 60%;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  transition: all 0.2s;
+  padding: 8px;
+  border-radius: 7px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.login .btn.btn-primary:hover {
+  background: var(--primary);
+  color: white;
+}
+
+
+/* Flèche de retour */
+.back-arrow {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  background: none;
+  border: none;
+  color: var(--primary-dark);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 10;
+}
+
+.back-arrow:hover {
+  color: var(--primary);
+  transform: translateX(-2px);
+}

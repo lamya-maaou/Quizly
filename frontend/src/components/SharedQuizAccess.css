@@ -1,0 +1,135 @@
+.shared-quiz-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.quiz-header h1 {
+  color: #7e57c2;
+  margin-bottom: 1rem;
+}
+
+.quiz-description {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.questions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.question-card {
+  background-color: #f8f5ff;
+  border: 1px solid #e0d6ff;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.question-card h3 {
+  color: #7e57c2;
+  margin-bottom: 1rem;
+}
+
+.question-text {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.choice-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background-color: #ffffff;
+  border: 1px solid #e0d6ff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.choice-label:hover {
+  background-color: #f0ebff;
+}
+
+.choice-label input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #7e57c2;
+}
+
+.choice-text {
+  color: #333;
+  font-size: 1rem;
+}
+
+.quiz-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.submit-button {
+  background-color: #7e57c2;
+  color: #ffffff;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #6a4caf;
+}
+
+.submit-button:disabled {
+  background-color: #b39ddb;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  color: #7e57c2;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  text-align: center;
+  color: #d32f2f;
+  padding: 2rem;
+  background-color: #ffebee;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .shared-quiz-container {
+    padding: 1rem;
+  }
+
+  .question-card {
+    padding: 1rem;
+  }
+
+  .choice-label {
+    padding: 0.5rem;
+  }
+} 

@@ -1,0 +1,268 @@
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .login-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .login-header h2 {
+    font-size: 1.8rem;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+  }
+  
+  .login-header p {
+    color: #718096;
+    font-size: 1rem;
+  }
+  
+  .quizly-logo {
+    font-family: "Times New Roman", Times, serif; 
+  font-size: 30px; /* Ajustez selon la taille de votre navbar */
+  font-weight: 700; /* Épais comme "LE MONDE" */
+  font-style: italic; /* Italique subtile */
+  color: #7e57c2; /* Violet de Quizly */
+  text-transform: uppercase; /* "QUIZLY" en majuscules */
+  letter-spacing: 0.5px; 
+  text-rendering: optimizeLegibility;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2d3748;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #7e57c2;
+  }
+  
+  .form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .remember-me {
+    display: flex;
+    align-items: center;
+  }
+  
+  .remember-me input {
+    margin-right: 0.5rem;
+  }
+  
+  .forgot-password {
+    color: #7e57c2;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #7e57c2 !important;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #5e35b1 !important;
+  }
+  
+  .signup-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #718096;
+  }
+  
+  .signup-link a {
+    color: #7e57c2;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .login-card {
+      padding: 2rem 1.5rem;
+      margin: 1rem;
+    }
+    
+    .login-header h2 {
+      font-size: 1.5rem;
+    }
+  }
+  .back-to-home {
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .back-to-home:hover {
+    text-decoration: underline;
+  }
+  /* Remember Me and Forgot Password */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 8px;
+}
+
+.forgot-password-button {
+  background: none;
+  border: none;
+  color: #4a6bff;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.forgot-password-button:hover {
+  color: #3a56d4;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.forgot-password-modal {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.modal-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4a6bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.modal-button:hover {
+  background-color: #3a56d4;
+}
+
+.modal-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.forgot-password-message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.forgot-password-message.success {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.forgot-password-message.error {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+/* Loading state */
+.login-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

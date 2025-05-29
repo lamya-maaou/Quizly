@@ -1,0 +1,12 @@
+# Fichiers sensibles
+.env            # <-- Ignore TOUS les .env (partout dans le projet)
+*.env           # Pour les variantes (.env.local, .env.prod, etc.)
+
+# Environnements Python
+venv/           # <-- Le / final est CRUCIAL pour les dossiers
+.venv/
+env/
+
+# Fichiers spécifiques
+db.sqlite3
+backend/.env
