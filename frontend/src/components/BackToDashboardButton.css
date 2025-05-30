@@ -1,0 +1,19 @@
+.back-dashboard-btn {
+  background: #7e57c2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: background 0.2s;
+  width: 38px;
+  height: 38px;
+}
+.back-dashboard-btn:hover {
+  background: #6a4caf;
+} 

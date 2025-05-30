@@ -1,150 +1,111 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
-  const [showForgotPasswordModal, setShowForgotPasswordModal] = useState(false);
-  const [forgotPasswordMessage, setForgotPasswordMessage] = useState("");
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [resetEmail, setResetEmail] = useState("");
+  const [resetMessage, setResetMessage] = useState({ type: "", text: "" });
+  const [resetLoading, setResetLoading] = useState(false);
 
-  // Check for remembered credentials on component mount
-  useEffect(() => {
-    const rememberedEmail = localStorage.getItem("rememberedEmail");
-    const rememberedPassword = localStorage.getItem("rememberedPassword");
-
-    if (rememberedEmail) {
-      setEmail(rememberedEmail);
-      setRememberMe(true);
-    }
-
-    if (rememberedPassword) {
-      setPassword(rememberedPassword);
-    }
-  }, []);
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setError("");
+    setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/auth/login/",
-        {
-          email: email,
-          password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
+      // Try admin login first
+      try {
+        const adminResponse = await axios.post(
+          "http://localhost:8000/api/admin/login/",
+          {
+            email: formData.email,
+            password: formData.password,
+          }
+        );
+        if (adminResponse.data.error === false) {
+          const { data } = adminResponse.data;
+          localStorage.setItem("token", data.access);
+          localStorage.setItem("refreshToken", data.refresh);
+          localStorage.setItem("user", JSON.stringify(data.user));
+          navigate("/admin/dashboard");
+          return;
+        } else {
+          throw new Error(adminResponse.data.error || "Login error");
         }
-      );
+      } catch (adminError) {
+        // If not admin, try normal login
+        const response = await axios.post(
+          "http://localhost:8000/api/auth/login/",
+          {
+            email: formData.email,
+            password: formData.password,
+          }
+        );
+        if (response.data.error === false) {
+          const { data } = response.data;
+          localStorage.setItem("token", data.access);
+          localStorage.setItem("refreshToken", data.refresh);
+          localStorage.setItem("user", JSON.stringify(data.user));
 
-      const token = response.data.data.access;
-      localStorage.setItem("token", token);
-
-      // Store credentials if "Remember Me" is checked
-      if (rememberMe) {
-        localStorage.setItem("rememberedEmail", email);
-        localStorage.setItem("rememberedPassword", password);
-      } else {
-        localStorage.removeItem("rememberedEmail");
-        localStorage.removeItem("rememberedPassword");
-      }
-
-      const role = response.data.data.user.role;
-
-      // Role-based redirection
-      if (role === "teacher") {
-        try {
-          const modulesResponse = await axios.get(
-            "http://localhost:8000/api/teacher/modules/check/",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          const hasModules = modulesResponse.data.has_modules;
-
-          if (hasModules) {
+          if (data.user.role === "admin") {
+            navigate("/admin/dashboard");
+          } else if (data.user.role === "teacher") {
             navigate("/teacher/modules");
           } else {
-            navigate("/teacher-create-module");
+            navigate("/student/dashboard");
           }
-        } catch (modulesError) {
-          console.error("Error checking modules:", modulesError);
-          alert("Error checking modules. Please try again.");
+        } else {
+          throw new Error(response.data.error || "Login error");
         }
-      } else if (role === "admin") {
-        navigate("/admin-dashboard");
-      } else if (role === "student") {
-        try {
-          const categoriesResponse = await axios.get(
-            "http://localhost:8000/api/student/categories/check/",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-
-          const hasCategories = categoriesResponse.data.has_modules;
-
-          if (hasCategories) {
-            navigate("/student/categories");
-          } else {
-            navigate("/student-create-category");
-          }
-        } catch (categoriesError) {
-          console.error("Error checking categories:", categoriesError);
-          alert("Error checking your categories. Please try again.");
-        }
-      } else {
-        console.error("Unknown role:", role);
-        navigate("/default-dashboard");
       }
-    } catch (error) {
-      console.error("Login error:", error);
-      alert(`Login failed: ${error.response?.data?.detail || error.message}`);
+    } catch (err) {
+      if (err.response) {
+        setError(err.response.data?.error || "An error occurred during login.");
+      } else {
+        setError(err.message || "Server connection error.");
+      }
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
-  const handleForgotPassword = async () => {
-    if (!forgotPasswordEmail) {
-      setForgotPasswordMessage("Please enter your email address");
-      return;
-    }
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    setResetMessage({ type: "", text: "" });
+    setResetLoading(true);
 
     try {
-      setIsLoading(true);
-      await axios.post("http://localhost:8000/api/auth/password/reset/", {
-        email: forgotPasswordEmail,
+      await axios.post("http://localhost:8000/api/password-reset/", {
+        email: resetEmail,
       });
-
-      setForgotPasswordMessage(
-        "Password reset link has been sent to your email"
-      );
-      setTimeout(() => {
-        setShowForgotPasswordModal(false);
-        setForgotPasswordMessage("");
-      }, 3000);
-    } catch (error) {
-      console.error("Forgot password error:", error);
-      setForgotPasswordMessage(
-        error.response?.data?.detail || "Failed to send reset link"
-      );
+      setResetMessage({
+        type: "success",
+        text: "A password reset email has been sent to your address.",
+      });
+      setResetEmail("");
+    } catch (err) {
+      setResetMessage({
+        type: "error",
+        text: "An error occurred. Please try again.",
+      });
     } finally {
-      setIsLoading(false);
+      setResetLoading(false);
     }
   };
 
@@ -152,102 +113,102 @@ const Login = () => {
     <div className="login-container">
       <div className="login-card">
         <Link to="/" className="back-to-home">
-          ← Back to home
+          ← Back to Home
         </Link>
         <div className="login-header">
           <h2>
-            Welcome back to <span className="quizly-logo">QUIZLY</span>
+            Welcome to <span className="quizly-logo">Quizly</span>
           </h2>
-          <p>Sign in to access your quizzes and learning materials</p>
+          <p>Sign in to access your space</p>
         </div>
+
         <form onSubmit={handleSubmit} className="login-form">
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
+
           <div className="form-options">
             <div className="remember-me">
-              <input
-                type="checkbox"
-                id="remember"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-              />
+              <input type="checkbox" id="remember" />
               <label htmlFor="remember">Remember me</label>
             </div>
             <button
               type="button"
               className="forgot-password-button"
-              onClick={() => setShowForgotPasswordModal(true)}
+              onClick={() => setShowForgotPassword(true)}
             >
               Forgot password?
             </button>
           </div>
-          <button type="submit" className="login-button" disabled={isLoading}>
-            {isLoading ? "Signing In..." : "Sign In"}
+
+          {error && <div className="error-message">{error}</div>}
+
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
+
         <div className="signup-link">
           Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
       </div>
 
-      {/* Forgot Password Modal */}
-      {showForgotPasswordModal && (
+      {showForgotPassword && (
         <div className="modal-overlay">
           <div className="forgot-password-modal">
             <button
               className="close-modal"
-              onClick={() => {
-                setShowForgotPasswordModal(false);
-                setForgotPasswordMessage("");
-              }}
+              onClick={() => setShowForgotPassword(false)}
             >
-              &times;
+              ×
             </button>
-            <h3>Reset Password</h3>
-            <p>Enter your email address to receive a password reset link</p>
-            <input
-              type="email"
-              placeholder="Your email address"
-              value={forgotPasswordEmail}
-              onChange={(e) => setForgotPasswordEmail(e.target.value)}
-              className="modal-input"
-            />
-            {forgotPasswordMessage && (
-              <p
-                className={`forgot-password-message ${
-                  forgotPasswordMessage.includes("sent") ? "success" : "error"
-                }`}
+            <h3>Forgot Password</h3>
+            <p>Enter your email address to receive a password reset link.</p>
+            <form onSubmit={handleForgotPassword}>
+              <input
+                type="email"
+                className="modal-input"
+                placeholder="Email"
+                value={resetEmail}
+                onChange={(e) => setResetEmail(e.target.value)}
+                required
+              />
+              <button
+                type="submit"
+                className="modal-button"
+                disabled={resetLoading}
               >
-                {forgotPasswordMessage}
-              </p>
+                {resetLoading ? "Sending..." : "Send Reset Link"}
+              </button>
+            </form>
+            {resetMessage.text && (
+              <div
+                className={`forgot-password-message ${resetMessage.type}`}
+                style={{ marginTop: "1rem" }}
+              >
+                {resetMessage.text}
+              </div>
             )}
-            <button
-              onClick={handleForgotPassword}
-              className="modal-button"
-              disabled={isLoading}
-            >
-              {isLoading ? "Sending..." : "Send Reset Link"}
-            </button>
           </div>
         </div>
       )}

@@ -84,7 +84,7 @@ const StudentCategories = () => {
     setError(null);
 
     try {
-      const response = await axios.put(
+      await axios.put(
         `http://localhost:8000/api/student/categories/${currentCategory.id}/update/`,
         { name: moduleName },
         {

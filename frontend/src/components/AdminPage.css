@@ -1,0 +1,22 @@
+.admin-page {
+  padding: 2rem;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+.admin-page-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.admin-page-header h1 {
+  color: #7e57c2;
+  margin: 0;
+  font-size: 2rem;
+}
+.admin-page-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 2rem;
+} 

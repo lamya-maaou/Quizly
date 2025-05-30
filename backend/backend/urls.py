@@ -23,10 +23,10 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-
+    path('django-admin/', admin.site.urls),  # Renommé pour éviter la confusion
     path('api/auth/', include('auth_app.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/', include('quizly.urls')),  # URLs de notre application admin
 
      path('', views.index, name='index'),  # la landing page
      path('api/teacher/', include('teacher_space.urls')),

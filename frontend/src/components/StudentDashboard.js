@@ -25,7 +25,7 @@ const StudentDashboard = () => {
           },
         }
       );
-      const results = Array.isArray(response.data) ? response.data : [];
+      const results = response.data.results || [];
       setQuizResults(results);
     } catch (err) {
       console.error("Error details:", err);
@@ -46,7 +46,7 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     fetchQuizResults();
-  }, [navigate]);
+  }, [fetchQuizResults]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");

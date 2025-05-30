@@ -419,6 +419,12 @@ const StudentCategoryDetail = () => {
           <span className="logo">Quizly</span>
         </div>
         <div className="navbar-right">
+          <button
+            className="dashboard-btn"
+            onClick={() => navigate("/student/dashboard")}
+          >
+            Dashboard
+          </button>
           <button className="join-quiz-btn" onClick={handleQuizAccess}>
             Passer Quiz
           </button>

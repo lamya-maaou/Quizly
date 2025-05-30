@@ -28,75 +28,35 @@
   gap: 15px;
 }
 
-.module-detail-container .navbar .navbar-right .history-btn, .back-button, .logout-btn {
-  padding: 8px 16px;
-  border: none;
+/* Style commun pour tous les boutons de la navbar */
+.navbar-right button {
+  background-color: transparent;
+  color: #7e57c2;
+  border: 1px solid #7e57c2;
   border-radius: 4px;
+  padding: 8px 16px;
   cursor: pointer;
+  font-size: 14px;
   font-weight: 500;
   transition: all 0.3s ease;
+  margin-right: 10px;
 }
 
-.module-detail-container .navbar .navbar-right .history-btn {
-  background-color: transparent;
-    color: #7e57c2;
-    border: 1px solid #7e57c2;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-right: 20px;
-}
-
-.module-detail-container .navbar .navbar-right .back-button {
-  background-color: transparent;
-    color: #7e57c2;
-    border: 1px solid #7e57c2;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-right: 20px;
-}
-
-.module-detail-container .navbar .navbar-right .logout-btn {
-  background-color: transparent;
-    color: #7e57c2;
-    border: 1px solid #7e57c2;
-    border-radius: 4px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-right: 20px;
-}
-
-.module-detail-container .navbar .navbar-right .history-btn:hover {
+/* Style hover commun pour tous les boutons */
+.navbar-right button:hover {
   background-color: #7e57c2;
-}
-.module-detail-container .navbar .navbar-right .back-button:hover{
-  background-color: #7e57c2;
+  color: white;
 }
 
-.module-detail-container .navbar .navbar-right .logout-btn:hover {
-  background-color: #7e57c2;
-}
+/* Suppression des styles spécifiques redondants */
 .module-detail-container .navbar .navbar-right .history-btn,
 .module-detail-container .navbar .navbar-right .back-button,
-.module-detail-container .navbar .navbar-right .logout-btn {
-  /* Ajoutez ces propriétés pour tous les états */
-  color: #7e57c2 !important; /* Force la couleur du texte */
+.module-detail-container .navbar .navbar-right .logout-btn,
+.module-detail-container .navbar .navbar-right .dashboard-btn,
+.module-detail-container .navbar .navbar-right .join-quiz-btn {
+  /* Les styles sont maintenant définis dans .navbar-right button */
 }
 
-/* Spécifiez aussi pour les états hover et active */
-.module-detail-container .navbar .navbar-right .history-btn:hover,
-.module-detail-container .navbar .navbar-right .back-button:hover,
-.module-detail-container .navbar .navbar-right .logout-btn:hover,
-.module-detail-container .navbar .navbar-right .history-btn:active,
-.module-detail-container .navbar .navbar-right .back-button:active,
-.module-detail-container .navbar .navbar-right .logout-btn:active {
-  color: white !important; /* Change la couleur du texte au survol/clic */
-  background-color: #7e57c2;
-}
 /* Module Content Styles */
 .module-content {
   background-color: white;
@@ -630,4 +590,20 @@
   .modal-actions button {
     width: 100%;
   }
+}
+
+.dashboard-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: #45a049;
 }

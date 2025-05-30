@@ -19,6 +19,13 @@ import StudentQuizDetail from "./components/StudentQuizDetail";
 import StudentDashboard from "./components/StudentDashboard";
 import SharedQuizAccess from "./components/SharedQuizAccess";
 import ErrorBoundary from "./components/ErrorBoundary";
+import AdminDashboard from "./components/AdminDashboard";
+import AdminUsers from "./components/AdminUsers";
+import AdminQuizzes from "./components/AdminQuizzes";
+import AdminHistory from "./components/AdminHistory";
+import AdminBackup from "./components/AdminBackup";
+import AdminStats from "./components/AdminStats";
+import AdminLogs from "./components/AdminLogs";
 import "./styles/global.css";
 
 function App() {
@@ -78,6 +85,13 @@ function App() {
               path="/quiz/:quizId/access/:token"
               element={<SharedQuizAccess />}
             />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/users" element={<AdminUsers />} />
+            <Route path="/admin/quizzes" element={<AdminQuizzes />} />
+            <Route path="/admin/history" element={<AdminHistory />} />
+            <Route path="/admin/backup" element={<AdminBackup />} />
+            <Route path="/admin/stats" element={<AdminStats />} />
+            <Route path="/admin/logs" element={<AdminLogs />} />
           </Routes>
         </div>
       </Router>

@@ -1,268 +1,177 @@
 .login-container {
     min-height: 100vh;
     display: flex;
+  align-items: center;
     justify-content: center;
-    align-items: center;
-    background-color: #f8f9fa;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #fff;
   }
   
   .login-card {
-    background: white;
-    padding: 3rem;
-    border-radius: 16px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(126, 87, 194, 0.15);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
     width: 100%;
-    max-width: 450px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+}
+
+.back-to-home {
+  color: #7e57c2;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  transition: color 0.2s;
+}
+.back-to-home:hover {
+  color: #5e35b1;
   }
   
   .login-header {
     text-align: center;
     margin-bottom: 2rem;
   }
-  
-  .login-header h2 {
-    font-size: 1.8rem;
-    color: #2d3748;
-    margin-bottom: 0.5rem;
+.quizly-logo {
+  color: #7e57c2;
+  font-weight: bold;
+  font-size: 1.3em;
   }
   
-  .login-header p {
-    color: #718096;
-    font-size: 1rem;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
   }
-  
-  .quizly-logo {
-    font-family: "Times New Roman", Times, serif; 
-  font-size: 30px; /* Ajustez selon la taille de votre navbar */
-  font-weight: 700; /* Épais comme "LE MONDE" */
-  font-style: italic; /* Italique subtile */
-  color: #7e57c2; /* Violet de Quizly */
-  text-transform: uppercase; /* "QUIZLY" en majuscules */
-  letter-spacing: 0.5px; 
-  text-rendering: optimizeLegibility;
-  }
-  
   .form-group {
-    margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   }
-  
   .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
+  color: #7e57c2;
     font-weight: 500;
-    color: #2d3748;
   }
-  
   .form-group input {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1px solid #e2e8f0;
+  padding: 0.9rem 1.1rem;
+  border: 1.5px solid #e0e0e0;
     border-radius: 8px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+  transition: border 0.2s, box-shadow 0.2s;
   }
-  
   .form-group input:focus {
+  border-color: #7e57c2;
+  box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.12);
     outline: none;
-    border-color: #7e57c2;
   }
   
   .form-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   }
-  
-  .remember-me {
-    display: flex;
-    align-items: center;
+.remember-me label {
+  color: #888;
+  font-size: 0.97rem;
   }
-  
-  .remember-me input {
-    margin-right: 0.5rem;
-  }
-  
-  .forgot-password {
+.forgot-password-button {
+  background: none;
+  border: none;
     color: #7e57c2;
-    text-decoration: none;
+  cursor: pointer;
+  font-size: 0.97rem;
     font-weight: 500;
+  transition: color 0.2s;
   }
-  
-  .forgot-password:hover {
+.forgot-password-button:hover {
+  color: #5e35b1;
     text-decoration: underline;
   }
   
   .login-button {
-    width: 100%;
-    padding: 1rem;
-    background-color: #7e57c2 !important;
-    color: white;
+  background: #7e57c2;
+  color: #fff;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+  padding: 1rem 0;
+  font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+  margin-top: 0.5rem;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(126, 87, 194, 0.08);
   }
-  
   .login-button:hover {
-    background-color: #5e35b1 !important;
+  background: #5e35b1;
+}
+
+.error-message {
+  background: #ffebee;
+  color: #c62828;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
   }
   
   .signup-link {
     text-align: center;
     margin-top: 1.5rem;
-    color: #718096;
+  color: #888;
+  font-size: 1rem;
   }
-  
   .signup-link a {
     color: #7e57c2;
     font-weight: 500;
     text-decoration: none;
+  transition: color 0.2s;
   }
-  
   .signup-link a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .login-card {
-      padding: 2rem 1.5rem;
-      margin: 1rem;
-    }
-    
-    .login-header h2 {
-      font-size: 1.5rem;
-    }
-  }
-  .back-to-home {
-    color: var(--primary);
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
-  
-  .back-to-home:hover {
-    text-decoration: underline;
-  }
-  /* Remember Me and Forgot Password */
-.form-options {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-}
-
-.remember-me input {
-  margin-right: 8px;
-}
-
-.forgot-password-button {
-  background: none;
-  border: none;
-  color: #4a6bff;
-  cursor: pointer;
-  font-size: 14px;
+  color: #5e35b1;
   text-decoration: underline;
 }
 
-.forgot-password-button:hover {
-  color: #3a56d4;
-}
-
-/* Modal Styles */
+/* Modal mot de passe oublié */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(126, 87, 194, 0.15);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
 }
-
 .forgot-password-modal {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(126, 87, 194, 0.13);
+  padding: 2rem 2.5rem;
+  min-width: 320px;
+  max-width: 95vw;
   position: relative;
 }
-
 .close-modal {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 1rem;
+  right: 1rem;
   background: none;
   border: none;
-  font-size: 20px;
+  color: #7e57c2;
+  font-size: 1.3rem;
   cursor: pointer;
-  color: #666;
 }
 
-.modal-input {
-  width: 100%;
-  padding: 12px;
-  margin: 15px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+@media (max-width: 600px) {
+  .login-card {
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    max-width: 98vw;
 }
-
-.modal-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #4a6bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.modal-button:hover {
-  background-color: #3a56d4;
-}
-
-.modal-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-.forgot-password-message {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.forgot-password-message.success {
-  background-color: #e6f7e6;
-  color: #2e7d32;
-}
-
-.forgot-password-message.error {
-  background-color: #ffebee;
-  color: #c62828;
-}
-
-/* Loading state */
-.login-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+  .forgot-password-modal {
+    padding: 1.2rem 0.7rem;
+    min-width: unset;
+  }
 }
