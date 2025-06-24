@@ -229,14 +229,19 @@ const StudentCategoryDetail = () => {
     setIsLoading(true);
     setError(null);
     try {
+      // Convertir les réponses au format attendu par le backend
+      const formattedAnswers = {};
+      userAnswers.forEach((answer, index) => {
+        const question = generatedQuiz.questions[index];
+        const selectedChoice = question.choices[answer.answer];
+        formattedAnswers[question.id] = selectedChoice.id;
+      });
+
+      console.log("Sending answers:", formattedAnswers); // Debug log
+
       const response = await axios.post(
         `http://localhost:8000/api/student/quizzes/${generatedQuiz.id}/submit/`,
-        {
-          answers: userAnswers.map((answer) => ({
-            question_id: answer.questionId,
-            selected_choice_index: answer.answer,
-          })),
-        },
+        formattedAnswers, // Envoyer directement l'objet formattedAnswers
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -245,6 +250,7 @@ const StudentCategoryDetail = () => {
         }
       );
 
+      console.log("Server response:", response.data); // Debug log
       setScore(response.data.score);
       setQuizSubmitted(true);
     } catch (error) {

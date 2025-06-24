@@ -162,73 +162,77 @@ def admin_users(request):
             status=status.HTTP_403_FORBIDDEN
         )
 
-@api_view(['PATCH'])
+@api_view(['PATCH', 'DELETE'])
 @permission_classes([IsAuthenticated, IsAdmin])
 def admin_user_detail(request, user_id):
     try:
+        print(f"\n=== Mise à jour utilisateur {user_id} ===")
+        print("Méthode:", request.method)
+        print("Données reçues:", request.data)
+        
         admin_user = request.user.adminuser
         user = CustomUser.objects.get(id=user_id)
-        
-        # Update user status
-        if 'is_active' in request.data:
-            user.is_active = request.data['is_active']
+        print(f"Utilisateur trouvé: {user.email}")
+
+        if request.method == 'PATCH':
+            # Update user fields
+            if 'username' in request.data:
+                user.username = request.data['username']
+            if 'email' in request.data:
+                user.email = request.data['email']
+            if 'role' in request.data:
+                user.role = request.data['role']
+            if 'is_active' in request.data:
+                print(f"Mise à jour is_active: {request.data['is_active']}")
+                user.is_active = bool(request.data['is_active'])
+            if 'password' in request.data and request.data['password']:
+                user.set_password(request.data['password'])
+            
+            print(f"État avant sauvegarde - is_active: {user.is_active}")
             user.save()
+            print(f"État après sauvegarde - is_active: {user.is_active}")
             
             # Log the action
             AdminLog.objects.create(
                 admin=admin_user,
                 action='MANAGE_USER',
-                details={'user_id': user.id, 'action': 'toggle_status', 'new_status': user.is_active}
+                details={'user_id': user.id, 'action': 'update', 'fields_updated': list(request.data.keys())}
             )
             
             return Response({
                 'id': user.id,
-                'username': user.username,
                 'email': user.email,
                 'role': user.role,
                 'is_active': user.is_active
             })
             
+        elif request.method == 'DELETE':
+            # Log the action before deleting
+            AdminLog.objects.create(
+                admin=admin_user,
+                action='MANAGE_USER',
+                details={'user_id': user.id, 'action': 'delete'}
+            )
+            user.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+            
+    except CustomUser.DoesNotExist:
+        print(f"Utilisateur {user_id} non trouvé")
         return Response(
-            {'error': 'Invalid data'},
+            {'error': 'User not found'},
+            status=status.HTTP_404_NOT_FOUND
+        )
+    except AdminUser.DoesNotExist:
+        print("Admin non trouvé")
+        return Response(
+            {'error': 'Accès non autorisé'},
+            status=status.HTTP_403_FORBIDDEN
+        )
+    except Exception as e:
+        print(f"Erreur lors de la mise à jour: {str(e)}")
+        return Response(
+            {'error': str(e)},
             status=status.HTTP_400_BAD_REQUEST
-        )
-    except CustomUser.DoesNotExist:
-        return Response(
-            {'error': 'User not found'},
-            status=status.HTTP_404_NOT_FOUND
-        )
-    except AdminUser.DoesNotExist:
-        return Response(
-            {'error': 'Accès non autorisé'},
-            status=status.HTTP_403_FORBIDDEN
-        )
-
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated, IsAdmin])
-def admin_user_delete(request, user_id):
-    try:
-        admin_user = request.user.adminuser
-        user = CustomUser.objects.get(id=user_id)
-        
-        # Log the action before deleting
-        AdminLog.objects.create(
-            admin=admin_user,
-            action='MANAGE_USER',
-            details={'user_id': user.id, 'action': 'delete'}
-        )
-        
-        user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-    except CustomUser.DoesNotExist:
-        return Response(
-            {'error': 'User not found'},
-            status=status.HTTP_404_NOT_FOUND
-        )
-    except AdminUser.DoesNotExist:
-        return Response(
-            {'error': 'Accès non autorisé'},
-            status=status.HTTP_403_FORBIDDEN
         )
 
 @api_view(['POST'])
@@ -239,7 +243,7 @@ def admin_user_create(request):
         data = request.data
         
         # Validate required fields
-        required_fields = ['username', 'email', 'password', 'role']
+        required_fields = ['email', 'password', 'role']
         for field in required_fields:
             if field not in data:
                 return Response(
@@ -256,9 +260,10 @@ def admin_user_create(request):
         
         # Create new user
         user = CustomUser.objects.create_user(
-            username=data['username'],
             email=data['email'],
             password=data['password'],
+            first_name=data.get('first_name', ''),
+            last_name=data.get('last_name', ''),
             role=data['role']
         )
         
@@ -271,8 +276,9 @@ def admin_user_create(request):
         
         return Response({
             'id': user.id,
-            'username': user.username,
             'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
             'role': user.role,
             'is_active': user.is_active
         }, status=status.HTTP_201_CREATED)

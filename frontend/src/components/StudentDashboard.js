@@ -46,7 +46,7 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     fetchQuizResults();
-  }, [fetchQuizResults]);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -118,16 +118,17 @@ const StudentDashboard = () => {
               <div key={result.id} className="result-card">
                 <h3>{result.quiz_title}</h3>
                 <div className="result-details">
-                  <p>Score: {result.score}%</p>
+                  <p>Module: {result.module_name}</p>
+                  <p>Score: {result.percentage}%</p>
                   <p>
-                    Date: {new Date(result.completed_at).toLocaleDateString()}
+                    Date: {new Date(result.date_taken).toLocaleDateString()}
                   </p>
                 </div>
                 <button
                   className="action-button"
                   onClick={() =>
                     navigate(
-                      `/student/categories/${result.category_id}/quizzes/${result.quiz_id}`
+                      `/student/categories/${result.module_id}/quizzes/${result.quiz_id}`
                     )
                   }
                 >

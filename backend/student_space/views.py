@@ -515,6 +515,8 @@ def student_quiz_results(request):
         for result in results:
             formatted_results.append({
                 'id': result.id,
+                'quiz_id': result.quiz.id,
+                'module_id': result.quiz.module.id,
                 'quiz_title': result.quiz.titre,
                 'module_name': result.quiz.module.name,
                 'score': result.score,

@@ -10,3 +10,7 @@ env/
 # Fichiers spécifiques
 db.sqlite3
 backend/.env
+
+__pycache__/
+*.pyc
+media/pdfs/*.pdf

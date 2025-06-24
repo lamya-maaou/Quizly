@@ -13,7 +13,6 @@ urlpatterns = [
     path('admin/users/', views.admin_users, name='admin_users'),
     path('admin/users/create/', views.admin_user_create, name='admin_user_create'),
     path('admin/users/<int:user_id>/', views.admin_user_detail, name='admin_user_detail'),
-    path('admin/users/<int:user_id>/delete/', views.admin_user_delete, name='admin_user_delete'),
     path('admin/quizzes/', views.admin_quizzes, name='admin_quizzes'),
     path('admin/quiz-history/', views.admin_quiz_history, name='admin_quiz_history'),
 ] 

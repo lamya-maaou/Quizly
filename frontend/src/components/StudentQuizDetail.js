@@ -16,6 +16,7 @@ const StudentQuizDetail = () => {
   useEffect(() => {
     const fetchQuiz = async () => {
       try {
+        console.log("Fetching quiz with ID:", quizId); // Debug log
         const response = await axios.get(
           `http://localhost:8000/api/student/quizzes/${quizId}/`,
           {
@@ -70,6 +71,11 @@ const StudentQuizDetail = () => {
         );
       } catch (error) {
         console.error("Error fetching quiz:", error);
+        console.error("Error details:", {
+          status: error.response?.status,
+          data: error.response?.data,
+          message: error.message,
+        });
         setError(
           error.response?.data?.error || error.message || "Failed to load quiz"
         );
@@ -94,14 +100,19 @@ const StudentQuizDetail = () => {
 
     setIsLoading(true);
     try {
+      // Convertir les réponses au format attendu par le backend
+      const formattedAnswers = {};
+      userAnswers.forEach((answer, index) => {
+        const question = quiz.questions[index];
+        const selectedChoice = question.choix[answer.answer];
+        formattedAnswers[question.id] = selectedChoice.id;
+      });
+
+      console.log("Sending answers:", formattedAnswers); // Debug log
+
       const response = await axios.post(
         `http://localhost:8000/api/student/quizzes/${quizId}/submit/`,
-        {
-          answers: userAnswers.map((answer) => ({
-            question_id: answer.questionId,
-            selected_choice_index: answer.answer,
-          })),
-        },
+        formattedAnswers,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -110,10 +121,16 @@ const StudentQuizDetail = () => {
         }
       );
 
+      console.log("Server response:", response.data); // Debug log
       setScore(response.data.score);
       setIsSubmitted(true);
     } catch (error) {
       console.error("Error submitting quiz:", error);
+      console.error("Error details:", {
+        status: error.response?.status,
+        data: error.response?.data,
+        message: error.message,
+      });
       setError(error.response?.data?.error || "Failed to submit quiz");
     } finally {
       setIsLoading(false);

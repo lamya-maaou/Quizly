@@ -109,7 +109,7 @@ const AdminUsers = () => {
         );
       } else {
         // Create new user
-        await axios.post(`${API_BASE}admin/users/`, formData, {
+        await axios.post(`${API_BASE}admin/users/create/`, formData, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }

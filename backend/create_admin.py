@@ -18,6 +18,15 @@ def create_admin_user():
     try:
         user = CustomUser.objects.get(email=admin_email)
         print(f"L'utilisateur {admin_email} existe déjà.")
+        print(f"État actuel - is_active: {user.is_active}, email_verified: {user.email_verified}")
+        
+        # Forcer la réactivation de l'utilisateur
+        user.is_active = True
+        user.email_verified = True
+        user.save()
+        print(f"L'utilisateur {admin_email} a été réactivé.")
+        print(f"Nouvel état - is_active: {user.is_active}, email_verified: {user.email_verified}")
+
     except CustomUser.DoesNotExist:
         # Créer l'utilisateur admin
         user = CustomUser.objects.create_user(
