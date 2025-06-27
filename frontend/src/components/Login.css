@@ -1,26 +1,32 @@
 :root {
-  --primary: #7e57c2;
-  --primary-dark: #5e35b1;
+  --primary-color: #6b21a8;
+  --primary-light: #9333ea;
+  --primary-dark: #581c87;
   --white: #ffffff;
-  --gray-light: #e0e0e0;
-  --text-gray: #888;
-  --background-color: #f9f9fb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --border-radius-small: 8px;
+  --transition: all 0.3s ease;
 }
 
 .login-container {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: var(--background-color);
-}
-
-.login-card {
+    justify-content: center;
+  background: #fff;
+  }
+  
+  .login-card {
   background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  padding: 2.5rem;
-  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+    width: 100%;
   max-width: 400px;
   display: flex;
   flex-direction: column;
@@ -29,7 +35,7 @@
 }
 
 .back-to-home {
-  color: var(--primary);
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
   margin-bottom: 1rem;
@@ -37,16 +43,15 @@
 }
 
 .back-to-home:hover {
-  color: var(--primary-dark);
-}
-
-.login-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
+  color: #5e35b1;
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 .quizly-logo {
-  color: var(--primary);
+  color: var(--primary-color);
   font-weight: bold;
   font-size: 1.3em;
 }
@@ -61,23 +66,20 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-}
-
-.form-group label {
-  color: var(--primary);
-  font-weight: 500;
-}
-
-.form-group input {
+  }
+  .form-group label {
+  color: var(--text-primary);
+    font-weight: 500;
+  }
+  .form-group input {
   padding: 0.9rem 1.1rem;
-  border: 1.5px solid var(--gray-light);
-  border-radius: 8px;
-  font-size: 1rem;
+  border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-small);
+    font-size: 1rem;
   transition: border 0.2s, box-shadow 0.2s;
-}
-
-.form-group input:focus {
-  border-color: var(--primary);
+  }
+  .form-group input:focus {
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(126, 87, 194, 0.12);
   outline: none;
 }
@@ -90,14 +92,14 @@
 }
 
 .remember-me label {
-  color: var(--text-gray);
+  color: var(--text-secondary);
   font-size: 0.97rem;
 }
 
 .forgot-password-button {
   background: none;
   border: none;
-  color: var(--primary);
+    color: var(--primary-color);
   cursor: pointer;
   font-size: 0.97rem;
   font-weight: 500;
@@ -105,26 +107,25 @@
 }
 
 .forgot-password-button:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
-}
-
-.login-button {
-  background: var(--primary);
-  color: var(--white);
-  border: none;
-  border-radius: 8px;
+  color: #5e35b1;
+    text-decoration: underline;
+  }
+  
+  .login-button {
+  background: var(--primary-color);
+  color: var(--text-secondary);
+    border: none;
+    border-radius: var(--border-radius-small);
   padding: 1rem 0;
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   margin-top: 0.5rem;
   transition: background 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(126, 87, 194, 0.08);
-}
-
-.login-button:hover {
-  background: var(--primary-dark);
+  box-shadow: var(--shadow-light);
+  }
+  .login-button:hover {
+  background: #5e35b1;
 }
 
 .error-message {
@@ -135,24 +136,22 @@
   margin-bottom: 0.5rem;
   font-size: 1rem;
   text-align: center;
-}
-
-.signup-link {
-  text-align: center;
-  margin-top: 1.5rem;
-  color: var(--text-gray);
+  }
+  
+  .signup-link {
+    text-align: center;
+    margin-top: 1.5rem;
+  color: var(--text-secondary);
   font-size: 1rem;
-}
-
-.signup-link a {
-  color: var(--primary);
-  font-weight: 500;
-  text-decoration: none;
+  }
+  .signup-link a {
+    color: #7e57c2;
+    font-weight: 500;
+    text-decoration: none;
   transition: color 0.2s;
-}
-
-.signup-link a:hover {
-  color: var(--primary-dark);
+  }
+  .signup-link a:hover {
+  color: #5e35b1;
   text-decoration: underline;
 }
 
@@ -173,7 +172,7 @@
 .forgot-password-modal {
   background: var(--white);
   border-radius: 14px;
-  box-shadow: 0 4px 24px rgba(126, 87, 194, 0.13);
+  box-shadow: var(--shadow-medium);
   padding: 2rem 2.5rem;
   min-width: 320px;
   max-width: 95vw;
@@ -194,10 +193,9 @@
 /* RESPONSIVE */
 @media (max-width: 600px) {
   .login-card {
-    padding: 1.5rem 1rem;
-    max-width: 95vw;
-  }
-
+    padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+    max-width: 98vw;
+}
   .forgot-password-modal {
     padding: 1.2rem 1rem;
   }
