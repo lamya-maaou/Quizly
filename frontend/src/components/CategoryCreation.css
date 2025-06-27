@@ -22,18 +22,24 @@ body {
 }
 
 .logo {
-  font-family: "Times New Roman", Times, serif; 
-  font-size: 24px; /* Ajustez selon la taille de votre navbar */
-  font-weight: 700; /* Épais comme "LE MONDE" */
-  font-style: italic; /* Italique subtile */
-  color: #7e57c2; /* Violet de Quizly */
-  text-transform: uppercase; /* "QUIZLY" en majuscules */
-  letter-spacing: 0.5px; 
-  text-rendering: optimizeLegibility; 
+  font-family: "Times New Roman", Times, serif;
+  font-size: 24px;
+  /* Ajustez selon la taille de votre navbar */
+  font-weight: 700;
+  /* Épais comme "LE MONDE" */
+  font-style: italic;
+  /* Italique subtile */
+  color: #7e57c2;
+  /* Violet de Quizly */
+  text-transform: uppercase;
+  /* "QUIZLY" en majuscules */
+  letter-spacing: 0.5px;
+  text-rendering: optimizeLegibility;
 }
 
 .add-button {
-  background-color: #7e57c2; /* Purple */
+  background-color: #7e57c2;
+  /* Purple */
   color: white;
   border: none;
   border-radius: 50%;
@@ -77,7 +83,8 @@ body {
   position: absolute;
   width: 100px;
   height: 140px;
-  background-color: #7e57c2; /* Purple */
+  background-color: #7e57c2;
+  /* Purple */
   border-radius: 4px 8px 8px 4px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -88,7 +95,8 @@ body {
   top: 5px;
   width: 8px;
   height: 130px;
-  background-color: #673ab7; /* Darker purple for spine */
+  background-color: #673ab7;
+  /* Darker purple for spine */
   border-radius: 4px 0 0 4px;
 }
 
@@ -118,10 +126,12 @@ body {
 
 /* 🟣 Input Module Name */
 .module-input {
-  width: 80%; /* Réduit un peu pour mieux s'intégrer */
+  width: 80%;
+  /* Réduit un peu pour mieux s'intégrer */
   padding: 12px 18px;
   margin: 15px 0;
-  border: 2px solid #7e57c2; /* Bordure violet clair */
+  border: 2px solid #7e57c2;
+  /* Bordure violet clair */
   border-radius: 8px;
   font-size: 16px;
   background-color: #fff;
@@ -129,8 +139,10 @@ body {
 }
 
 .module-input:focus {
-  border-color: #5e35b1; /* Bordure plus foncée au focus */
-  box-shadow: 0 0 8px rgba(126, 87, 194, 0.5); /* Glow léger */
+  border-color: #5e35b1;
+  /* Bordure plus foncée au focus */
+  box-shadow: 0 0 8px rgba(126, 87, 194, 0.5);
+  /* Glow léger */
   outline: none;
 }
 
@@ -141,7 +153,8 @@ body {
 
 /* 🟣 Amélioration du bouton "Create Material" */
 .create-button {
-  background-color: #7e57c2; /* Violet */
+  background-color: #7e57c2;
+  /* Violet */
   color: white;
   border: none;
   border-radius: 8px;
@@ -149,12 +162,15 @@ body {
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-top: 20px; /* Espacement supplémentaire */
+  margin-top: 20px;
+  /* Espacement supplémentaire */
 }
 
 .create-button:hover {
-  background-color: #5e35b1; /* Violet plus foncé */
-  transform: scale(1.05); /* Effet léger au survol */
+  background-color: #5e35b1;
+  /* Violet plus foncé */
+  transform: scale(1.05);
+  /* Effet léger au survol */
 }
 
 /* Small adjustment for better responsiveness on small screens */

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import "../styles/common.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const Login = () => {
           } else if (data.user.role === "teacher") {
             navigate("/teacher/modules");
           } else {
-            navigate("/student/dashboard");
+            navigate("/student/categories/");
           }
         } else {
           throw new Error(response.data.error || "Login error");
