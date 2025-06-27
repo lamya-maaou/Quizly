@@ -26,7 +26,7 @@ import AdminHistory from "./components/AdminHistory";
 import AdminBackup from "./components/AdminBackup";
 import AdminStats from "./components/AdminStats";
 import AdminLogs from "./components/AdminLogs";
-import "./styles/global.css";
+import "./styles/common.css";
 
 function App() {
   return (
